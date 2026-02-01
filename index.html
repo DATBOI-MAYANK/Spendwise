@@ -8,6 +8,28 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
+        <main>
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Dashboard</li>
+                    <li id="Hero">Spendwise</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+            <header>
+                <h1>Today's Budget</h1>
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Budget"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                />
+            </header>
+            <section></section>
+            <footer></footer>
+        </main>
         <script src="./script.js"></script>
     </body>
 </html>

@@ -10,3 +10,67 @@ body {
     height: 100%;
     width: 100%;
 }
+
+main {
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+}
+
+ul {
+    color: white;
+    font-weight: 700;
+    font-size: 25px;
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+ul li {
+    cursor: pointer;
+}
+
+#Hero {
+    font-size: 40px;
+}
+
+header {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+#amount {
+    margin-top: 30px;
+    height: 45px;
+    width: 190px;
+    background-color: black;
+    text-align: center;
+    font-size: 30px;
+    padding: 40px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+}
+
+#amount::placeholder {
+    color: gray;
+    opacity: 1;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield;
+
+    -moz-appearance: textfield;
+}
