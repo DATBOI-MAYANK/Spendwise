@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
@@ -13,19 +12,24 @@
                 <ul>
                     <li>Home</li>
                     <li>Dashboard</li>
-                    <li id="Hero">Spendwise</li>
+                    <li id="Hero">SpendWise</li>
                     <li>About</li>
                     <li>Contact</li>
                 </ul>
             </nav>
             <header>
                 <h1>Today's Budget</h1>
-                <input
-                    type="number"
-                    id="amount"
-                    placeholder="Budget"
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
-                />
+                <div id="modal">
+                    <input
+                        type="number"
+                        id="budget"
+                        placeholder="Budget"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    />
+                    <button id="confirm">Add Amount</button>
+                </div>
+                <p id="amount">₹ Budget</p>
+                <button id="add">Add Amount</button>
             </header>
             <section></section>
             <footer></footer>
