@@ -31,7 +31,27 @@
                 <p id="amount">₹ Budget</p>
                 <button id="add">Add Amount</button>
             </header>
-            <section></section>
+            <section>
+                <div id="expenseBox">
+                    <h2>List of Expense :-</h2>
+                    <button id="expense">Add Amount</button>
+                </div>
+                <div id="expenseModal">
+                    <div>
+                        <input
+                            type="number"
+                            id="price"
+                            placeholder="Price"
+                            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        />
+                        <input type="number" id="item" placeholder="Item" />
+                    </div>
+                    <button id="addItem">Confirm</button>
+                </div>
+                <ul id="list">
+                    <li>Food</li>
+                </ul>
+            </section>
             <footer></footer>
         </main>
         <script src="./script.js"></script>
