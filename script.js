@@ -8,6 +8,7 @@ let expenseBtn = document.querySelector("#expense");
 let price = document.querySelector("#price");
 let item = document.querySelector("#item");
 let addItem = document.querySelector("#addItem");
+let list = document.querySelector("#list");
 
 expenseBtn.addEventListener("click", () => {
   price.style.display = "block";
@@ -20,13 +21,46 @@ addItem.addEventListener("click", () => {
   if (!price.value && !item.value) {
     alert("Item and Price cannot be empty!!");
   } else {
-    price.style.display = "none";
-    item.style.display = "none";
-    price.value = "";
-    item.value = "";
-    addItem.style.display = "none";
-    expenseModal.style.position = "";
+    addExpense(item.value, price.value);
+    displayExpense();
+    revertBack();
   }
+});
+
+function revertBack() {
+  price.style.display = "none";
+  item.style.display = "none";
+  price.value = "";
+  item.value = "";
+  addItem.style.display = "none";
+  expenseModal.style.position = "";
+}
+
+let expenses = JSON.parse(localStorage.getItem("Expense")) || [];
+function addExpense(name, amount) {
+  const expense = {
+    name: name,
+    amount: amount,
+  };
+  expenses.push(expense);
+  localStorage.setItem("Expense", JSON.stringify(expenses));
+}
+
+function displayExpense() {
+  list.innerHTML = "";
+
+  expenses.forEach((exp) => {
+    const li = document.createElement("li");
+
+    li.textContent = `${exp.name} -- ${"₹" + Number(exp.amount).toLocaleString("en-IN")}`;
+
+    list.appendChild(li);
+  });
+}
+
+window.addEventListener("load", () => {
+  displayExpense();
+  setBudget();
 });
 
 addBtn.addEventListener("click", () => {
@@ -44,6 +78,12 @@ confirm.addEventListener("click", () => {
     confirm.style.display = "none";
     modal.style.position = "";
     budget.value = "";
-    amount.innerHTML = "₹" + Number(value).toLocaleString("en-IN");
+    localStorage.setItem("Budget", value);
+    setBudget();
   }
 });
+
+function setBudget() {
+  let budget = localStorage.getItem("Budget");
+  amount.innerHTML = "₹" + Number(budget).toLocaleString("en-IN");
+}

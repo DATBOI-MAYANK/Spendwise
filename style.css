@@ -53,6 +53,7 @@ header {
     text-align: center;
     font-size: 25px;
     padding: 10px;
+    padding-bottom: 40px;
     border-radius: 10px;
     border: 2px solid white;
     color: gray;
@@ -67,6 +68,7 @@ header {
     text-align: center;
     font-size: 25px;
     padding: 10px;
+    /*padding-bottom:;*/
     border-radius: 10px;
     border: 2px solid white;
     color: gray;
@@ -140,6 +142,11 @@ section {
 
 #expenseBox > h2 {
     padding-top: 20px;
+}
+
+#list {
+    display: flex;
+    flex-direction: column;
 }
 
 #list li {
