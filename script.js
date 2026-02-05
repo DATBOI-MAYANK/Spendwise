@@ -44,6 +44,7 @@ function addExpense(name, amount) {
   };
   expenses.push(expense);
   localStorage.setItem("Expense", JSON.stringify(expenses));
+  updateBudget(amount);
 }
 
 function displayExpense() {
@@ -51,8 +52,9 @@ function displayExpense() {
 
   expenses.forEach((exp) => {
     const li = document.createElement("li");
+    li.classList.add("expense-item");
 
-    li.textContent = `${exp.name} -- ${"₹" + Number(exp.amount).toLocaleString("en-IN")}`;
+    li.textContent = `${exp.name}       ${"₹" + Number(exp.amount).toLocaleString("en-IN")}`;
 
     list.appendChild(li);
   });
@@ -85,5 +87,16 @@ confirm.addEventListener("click", () => {
 
 function setBudget() {
   let budget = localStorage.getItem("Budget");
+  if (budget < 0) {
+    amount.style.color = "red";
+  }
   amount.innerHTML = "₹" + Number(budget).toLocaleString("en-IN");
+}
+
+function updateBudget(amount) {
+  let budget = localStorage.getItem("Budget");
+  let price = amount;
+  let updatedBudget = budget - price;
+  localStorage.setItem("Budget", updatedBudget);
+  setBudget();
 }
