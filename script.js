@@ -9,12 +9,14 @@ let price = document.querySelector("#price");
 let item = document.querySelector("#item");
 let addItem = document.querySelector("#addItem");
 let list = document.querySelector("#list");
+let cancelBtn = document.querySelector("#cancel");
 
 expenseBtn.addEventListener("click", () => {
   price.style.display = "block";
   item.style.display = "block";
   addItem.style.display = "block";
   expenseModal.style.position = "absolute";
+  cancelBtn.style.display = "block";
 });
 
 addItem.addEventListener("click", () => {
@@ -23,17 +25,31 @@ addItem.addEventListener("click", () => {
   } else {
     addExpense(item.value, price.value);
     displayExpense();
-    revertBack();
+    revertExpenseModal();
   }
 });
 
-function revertBack() {
+cancelBtn.addEventListener("click", () => {
+  revertExpenseModal();
+  revertModal();
+});
+
+function revertExpenseModal() {
   price.style.display = "none";
   item.style.display = "none";
   price.value = "";
   item.value = "";
   addItem.style.display = "none";
   expenseModal.style.position = "";
+  cancelBtn.style.display = "none";
+}
+
+function revertModal() {
+  budget.style.display = "none";
+  confirm.style.display = "none";
+  modal.style.position = "";
+  budget.value = "";
+  cancelBtn.style.display = "none";
 }
 
 let expenses = JSON.parse(localStorage.getItem("Expense")) || [];
@@ -69,6 +85,7 @@ addBtn.addEventListener("click", () => {
   budget.style.display = "block";
   confirm.style.display = "block";
   modal.style.position = "absolute";
+  cancelBtn.style.display = "block";
 });
 
 confirm.addEventListener("click", () => {
@@ -76,10 +93,7 @@ confirm.addEventListener("click", () => {
     alert("Budget cannot be empty!!");
   } else {
     let value = budget.value.replace(/,/g, "");
-    budget.style.display = "none";
-    confirm.style.display = "none";
-    modal.style.position = "";
-    budget.value = "";
+    revertModal();
     localStorage.setItem("Budget", value);
     setBudget();
   }

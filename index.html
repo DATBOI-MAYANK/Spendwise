@@ -10,11 +10,11 @@
         <main>
             <nav>
                 <ul>
-                    <li>Home</li>
-                    <li>Dashboard</li>
+                    <li class="navElem">Home</li>
+                    <li class="navElem">Dashboard</li>
                     <li id="Hero">SpendWise</li>
-                    <li>About</li>
-                    <li>Contact</li>
+                    <li class="navElem">About</li>
+                    <li class="navElem">Contact</li>
                 </ul>
             </nav>
             <header>
@@ -30,7 +30,10 @@
                         placeholder="Budget"
                         oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                     />
-                    <button id="confirm">Add Amount</button>
+                    <div id="buttonBox">
+                        <button id="confirm">Add Amount</button>
+                        <button id="cancel">Cancel</button>
+                    </div>
                 </div>
             </header>
             <section>
@@ -48,7 +51,10 @@
                         />
                         <input type="text" id="item" placeholder="Item" />
                     </div>
-                    <button id="addItem">Confirm</button>
+                    <div id="buttonBox">
+                        <button id="addItem">Confirm</button>
+                        <button id="cancel">Cancel</button>
+                    </div>
                 </div>
                 <ul id="list"></ul>
             </section>
